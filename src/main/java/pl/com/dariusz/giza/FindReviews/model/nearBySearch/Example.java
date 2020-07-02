@@ -1,18 +1,15 @@
 
-package pl.com.dariusz.giza.FindReviews.model;
+package pl.com.dariusz.giza.FindReviews.model.nearBySearch;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class GooMaps {
+public class Example {
 
     @SerializedName("html_attributions")
     @Expose
     private List<Object> htmlAttributions = null;
-    @SerializedName("next_page_token")
-    @Expose
-    private String nextPageToken;
     @SerializedName("results")
     @Expose
     private List<Result> results = null;
@@ -26,14 +23,6 @@ public class GooMaps {
 
     public void setHtmlAttributions(List<Object> htmlAttributions) {
         this.htmlAttributions = htmlAttributions;
-    }
-
-    public String getNextPageToken() {
-        return nextPageToken;
-    }
-
-    public void setNextPageToken(String nextPageToken) {
-        this.nextPageToken = nextPageToken;
     }
 
     public List<Result> getResults() {

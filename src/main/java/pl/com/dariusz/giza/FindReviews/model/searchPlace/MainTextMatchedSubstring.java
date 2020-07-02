@@ -1,10 +1,10 @@
 
-package pl.com.dariusz.giza.FindReviews.model;
+package pl.com.dariusz.giza.FindReviews.model.searchPlace;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class MatchedSubstring {
+public class MainTextMatchedSubstring {
 
     @SerializedName("length")
     @Expose

@@ -1,25 +1,17 @@
 
-package pl.com.dariusz.giza.FindReviews.model;
+package pl.com.dariusz.giza.FindReviews.model.searchPlace;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class MainTextMatchedSubstring {
+public class Term {
 
-    @SerializedName("length")
-    @Expose
-    private Integer length;
     @SerializedName("offset")
     @Expose
     private Integer offset;
-
-    public Integer getLength() {
-        return length;
-    }
-
-    public void setLength(Integer length) {
-        this.length = length;
-    }
+    @SerializedName("value")
+    @Expose
+    private String value;
 
     public Integer getOffset() {
         return offset;
@@ -27,6 +19,14 @@ public class MainTextMatchedSubstring {
 
     public void setOffset(Integer offset) {
         this.offset = offset;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
     }
 
 }

@@ -1,5 +1,5 @@
 
-package pl.com.dariusz.giza.FindReviews.model;
+package pl.com.dariusz.giza.FindReviews.model.nearBySearch;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;
@@ -7,6 +7,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class Result {
 
+    @SerializedName("business_status")
+    @Expose
+    private String businessStatus;
     @SerializedName("geometry")
     @Expose
     private Geometry geometry;
@@ -19,12 +22,24 @@ public class Result {
     @SerializedName("name")
     @Expose
     private String name;
+    @SerializedName("opening_hours")
+    @Expose
+    private OpeningHours openingHours;
     @SerializedName("photos")
     @Expose
     private List<Photo> photos = null;
     @SerializedName("place_id")
     @Expose
     private String placeId;
+    @SerializedName("plus_code")
+    @Expose
+    private PlusCode plusCode;
+    @SerializedName("price_level")
+    @Expose
+    private Integer priceLevel;
+    @SerializedName("rating")
+    @Expose
+    private Double rating;
     @SerializedName("reference")
     @Expose
     private String reference;
@@ -34,24 +49,20 @@ public class Result {
     @SerializedName("types")
     @Expose
     private List<String> types = null;
-    @SerializedName("vicinity")
-    @Expose
-    private String vicinity;
-    @SerializedName("business_status")
-    @Expose
-    private String businessStatus;
-    @SerializedName("opening_hours")
-    @Expose
-    private OpeningHours openingHours;
-    @SerializedName("plus_code")
-    @Expose
-    private PlusCode plusCode;
-    @SerializedName("rating")
-    @Expose
-    private Double rating;
     @SerializedName("user_ratings_total")
     @Expose
     private Integer userRatingsTotal;
+    @SerializedName("vicinity")
+    @Expose
+    private String vicinity;
+
+    public String getBusinessStatus() {
+        return businessStatus;
+    }
+
+    public void setBusinessStatus(String businessStatus) {
+        this.businessStatus = businessStatus;
+    }
 
     public Geometry getGeometry() {
         return geometry;
@@ -85,6 +96,14 @@ public class Result {
         this.name = name;
     }
 
+    public OpeningHours getOpeningHours() {
+        return openingHours;
+    }
+
+    public void setOpeningHours(OpeningHours openingHours) {
+        this.openingHours = openingHours;
+    }
+
     public List<Photo> getPhotos() {
         return photos;
     }
@@ -99,6 +118,30 @@ public class Result {
 
     public void setPlaceId(String placeId) {
         this.placeId = placeId;
+    }
+
+    public PlusCode getPlusCode() {
+        return plusCode;
+    }
+
+    public void setPlusCode(PlusCode plusCode) {
+        this.plusCode = plusCode;
+    }
+
+    public Integer getPriceLevel() {
+        return priceLevel;
+    }
+
+    public void setPriceLevel(Integer priceLevel) {
+        this.priceLevel = priceLevel;
+    }
+
+    public Double getRating() {
+        return rating;
+    }
+
+    public void setRating(Double rating) {
+        this.rating = rating;
     }
 
     public String getReference() {
@@ -125,52 +168,20 @@ public class Result {
         this.types = types;
     }
 
-    public String getVicinity() {
-        return vicinity;
-    }
-
-    public void setVicinity(String vicinity) {
-        this.vicinity = vicinity;
-    }
-
-    public String getBusinessStatus() {
-        return businessStatus;
-    }
-
-    public void setBusinessStatus(String businessStatus) {
-        this.businessStatus = businessStatus;
-    }
-
-    public OpeningHours getOpeningHours() {
-        return openingHours;
-    }
-
-    public void setOpeningHours(OpeningHours openingHours) {
-        this.openingHours = openingHours;
-    }
-
-    public PlusCode getPlusCode() {
-        return plusCode;
-    }
-
-    public void setPlusCode(PlusCode plusCode) {
-        this.plusCode = plusCode;
-    }
-
-    public Double getRating() {
-        return rating;
-    }
-
-    public void setRating(Double rating) {
-        this.rating = rating;
-    }
-
     public Integer getUserRatingsTotal() {
         return userRatingsTotal;
     }
 
     public void setUserRatingsTotal(Integer userRatingsTotal) {
         this.userRatingsTotal = userRatingsTotal;
+    }
+
+    public String getVicinity() {
+        return vicinity;
+    }
+
+    public void setVicinity(String vicinity) {
+        this.vicinity = vicinity;
     }
 
 }

@@ -1,5 +1,5 @@
 
-package pl.com.dariusz.giza.FindReviews.model;
+package pl.com.dariusz.giza.FindReviews.model.nearBySearch;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;
