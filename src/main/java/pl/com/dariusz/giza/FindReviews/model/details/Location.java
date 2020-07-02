@@ -1,5 +1,5 @@
 
-package pl.com.dariusz.giza.FindReviews.model.nearBySearch;
+package pl.com.dariusz.giza.FindReviews.model.details;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

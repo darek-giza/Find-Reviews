@@ -2,7 +2,7 @@ package pl.com.dariusz.giza.FindReviews.service.nearbysearch;
 
 import com.google.gson.Gson;
 import org.springframework.stereotype.Service;
-import pl.com.dariusz.giza.FindReviews.model.nearBySearch.Example;
+import pl.com.dariusz.giza.FindReviews.model.nearbySearch.NearbyPlaces;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -11,9 +11,9 @@ import java.net.URLEncoder;
 import java.util.logging.Logger;
 
 @Service
-public class NearBySearchServiceImpl implements NearBySearchService {
+public class NearbySearchServiceImpl implements NearbySearchService {
 
-    Logger LOGGER = Logger.getLogger(NearBySearchServiceImpl.class.getName());
+    Logger LOGGER = Logger.getLogger(NearbySearchServiceImpl.class.getName());
     private static final String PLACES_API_BASE = "https://maps.googleapis.com/maps/api/place";
     private static final String TYPE_SEARCH = "/nearbysearch";
     private static final String OUT_JSON = "/json";
@@ -22,8 +22,8 @@ public class NearBySearchServiceImpl implements NearBySearchService {
 
 
     @Override
-    public Example nearbysearch(String types, double lat, double lng, int radius, String keywords,
-                                String language, Integer minprice, String name, Boolean opennow) throws IOException {
+    public NearbyPlaces nearbysearch(String types, double lat, double lng, int radius, String keywords,
+                                     String language, Integer minprice, String name, Boolean opennow) throws IOException {
 
         StringBuilder sb = new StringBuilder(PLACES_API_BASE);
         sb.append(TYPE_SEARCH);
@@ -40,7 +40,7 @@ public class NearBySearchServiceImpl implements NearBySearchService {
 
         URL url = new URL(sb.toString());
         InputStreamReader reader = new InputStreamReader(url.openStream());
-        Example example = new Gson().fromJson(reader, Example.class);
+        NearbyPlaces example = new Gson().fromJson(reader, NearbyPlaces.class);
         LOGGER.info("Searching nearBySearch " + url);
         return example;
     }

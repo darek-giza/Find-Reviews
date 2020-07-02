@@ -1,10 +1,10 @@
 
-package pl.com.dariusz.giza.FindReviews.model.nearBySearch;
+package pl.com.dariusz.giza.FindReviews.model.nearbySearch;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Northeast {
+public class Location {
 
     @SerializedName("lat")
     @Expose

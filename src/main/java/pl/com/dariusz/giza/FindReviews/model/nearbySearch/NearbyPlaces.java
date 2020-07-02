@@ -1,11 +1,11 @@
 
-package pl.com.dariusz.giza.FindReviews.model.nearBySearch;
+package pl.com.dariusz.giza.FindReviews.model.nearbySearch;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Example {
+public class NearbyPlaces {
 
     @SerializedName("html_attributions")
     @Expose
