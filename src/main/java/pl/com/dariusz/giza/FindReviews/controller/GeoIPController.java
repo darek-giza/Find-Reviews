@@ -20,10 +20,7 @@ public class GeoIPController {
     @GetMapping("/geoIP")
     public GeoIP getLocation() throws IOException, GeoIp2Exception {
 
-        ipLocationService.GeoIpLocationService();
-        final GeoIP location = ipLocationService.getLocation();
-
-        return location;
+        return ipLocationService.getLocation();
 
     }
 }

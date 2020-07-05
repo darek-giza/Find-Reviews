@@ -26,7 +26,7 @@ public class NearbySearchController {
     @GetMapping("/nearbysearch")
     public NearbyPlaces nearBySearch() throws IOException, GeoIp2Exception {
 
-        locationService.GeoIpLocationService();
+        locationService.getLocation();
         final GeoIP location = locationService.getLocation();
         final Double latitude = Double.valueOf(location.getLatitude());
         final Double longitude = Double.valueOf(location.getLongitude());
