@@ -7,7 +7,6 @@ import pl.com.dariusz.giza.FindReviews.model.geolocation.GeoIP;
 import pl.com.dariusz.giza.FindReviews.service.geolocation.GeoIPLocationService;
 
 import java.io.IOException;
-import java.util.logging.Logger;
 
 @RestController
 public class GeoIPController {
