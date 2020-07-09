@@ -6,11 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import pl.com.dariusz.giza.FindReviews.model.details.Details;
 import pl.com.dariusz.giza.FindReviews.service.details.DetailsService;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.util.logging.Logger;
 
 @RestController
 public class DetailsController {
