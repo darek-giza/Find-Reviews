@@ -3,14 +3,14 @@ package pl.com.dariusz.giza.FindReviews.service.googleApi.findPlacesByType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.com.dariusz.giza.FindReviews.model.googleApi.details.Details;
+import pl.com.dariusz.giza.FindReviews.model.googleApi.detailsDTO.DetailsDTO;
 import pl.com.dariusz.giza.FindReviews.model.googleApi.nearbySearch.NearbyPlaces;
-import pl.com.dariusz.giza.FindReviews.model.googleApi.nearbySearch.Result;
 import pl.com.dariusz.giza.FindReviews.service.googleApi.details.DetailsService;
 import pl.com.dariusz.giza.FindReviews.service.googleApi.nearbysearch.NearbySearchService;
 import pl.com.dariusz.giza.FindReviews.service.googleApi.searchAutocomplete.SearchService;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -30,7 +30,14 @@ public class FindServiceImpl implements FindService {
     }
 
     @Override
-    public Set<Details> findPlacesDetails(String city, String types) throws IOException {
+    public Set<DetailsDTO> findPlacesDetails(String city, String types) throws IOException {
+
+        int radius = 1000;
+        String keywords = null;
+        String language = null;
+        Integer minprice = null;
+        String name = null;
+        boolean opennow = true;
 
         final String placeId = searchService
                 .search(city)
@@ -43,19 +50,24 @@ public class FindServiceImpl implements FindService {
         final Double lat = detail.getResult().getGeometry().getLocation().getLat();
         final Double lng = detail.getResult().getGeometry().getLocation().getLng();
 
-        final NearbyPlaces nearbysearch = nearbySearchService.nearbysearch(types, lat, lng, 10000, null,
-                null, null, null, true);
+        final NearbyPlaces nearbysearch = nearbySearchService.nearbysearch(types, lat, lng, radius, keywords,
+                language, minprice, name, opennow);
 
-        final List<Result> places = nearbysearch.getResults();
-
-        final Set<String> id = places
+        final Set<String> id = nearbysearch.getResults()
                 .stream()
                 .map(i -> i.getPlaceId())
                 .collect(Collectors.toSet());
 
+        Set<DetailsDTO> detailsDto = new HashSet<>();
+
         final Set<Details> allPlacesDetails = detailsService.getAllPlacesDetails(id);
 
-        return allPlacesDetails;
+        allPlacesDetails.forEach(i -> {
+            final String placeName = i.getResult().getName();
+            final String placeId1 = i.getResult().getPlaceId();
+            detailsDto.add(new DetailsDTO(placeName, placeId1));
 
+        });
+        return detailsDto;
     }
 }
