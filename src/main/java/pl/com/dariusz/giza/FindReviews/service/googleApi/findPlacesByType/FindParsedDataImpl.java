@@ -2,9 +2,9 @@ package pl.com.dariusz.giza.FindReviews.service.googleApi.findPlacesByType;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.com.dariusz.giza.FindReviews.model.googleApi.details.Details;
-import pl.com.dariusz.giza.FindReviews.model.googleApi.detailsDTO.Places;
-import pl.com.dariusz.giza.FindReviews.model.googleApi.detailsDTO.Review;
+import pl.com.dariusz.giza.FindReviews.model.googleApiModels.details.Details;
+import pl.com.dariusz.giza.FindReviews.model.places.Places;
+import pl.com.dariusz.giza.FindReviews.model.places.Review;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -38,7 +38,7 @@ public class FindParsedDataImpl implements FindParsedData {
             String website = i.getResult().getWebsite();
             String placeId1 = i.getResult().getPlaceId();
             List<String> type = i.getResult().getTypes();
-            List<pl.com.dariusz.giza.FindReviews.model.googleApi.details.Review> reviews = i.getResult().getReviews();
+            List<pl.com.dariusz.giza.FindReviews.model.googleApiModels.details.Review> reviews = i.getResult().getReviews();
 
             if (reviews != null) {
                 List<Review> reviewsDto = new ArrayList<>();

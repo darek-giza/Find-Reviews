@@ -2,7 +2,7 @@ package pl.com.dariusz.giza.FindReviews.service.googleApi.details;
 
 import com.google.gson.Gson;
 import org.springframework.stereotype.Service;
-import pl.com.dariusz.giza.FindReviews.model.googleApi.details.Details;
+import pl.com.dariusz.giza.FindReviews.model.googleApiModels.details.Details;
 import pl.com.dariusz.giza.FindReviews.service.googleApi.nearbysearch.NearbySearchServiceImpl;
 
 import java.io.IOException;

@@ -2,8 +2,8 @@ package pl.com.dariusz.giza.FindReviews.service.googleApi.findPlacesByType;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.com.dariusz.giza.FindReviews.model.googleApi.details.Details;
-import pl.com.dariusz.giza.FindReviews.model.googleApi.nearbySearch.NearbyPlaces;
+import pl.com.dariusz.giza.FindReviews.model.googleApiModels.details.Details;
+import pl.com.dariusz.giza.FindReviews.model.googleApiModels.nearbySearch.NearbyPlaces;
 import pl.com.dariusz.giza.FindReviews.service.googleApi.details.DetailsService;
 import pl.com.dariusz.giza.FindReviews.service.googleApi.nearbysearch.NearbySearchService;
 import pl.com.dariusz.giza.FindReviews.service.googleApi.searchAutocomplete.SearchService;

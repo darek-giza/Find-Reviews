@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import pl.com.dariusz.giza.FindReviews.model.googleApi.geolocation.GeoIP;
-import pl.com.dariusz.giza.FindReviews.model.googleApi.nearbySearch.NearbyPlaces;
+import pl.com.dariusz.giza.FindReviews.model.googleApiModels.geolocation.GeoIP;
+import pl.com.dariusz.giza.FindReviews.model.googleApiModels.nearbySearch.NearbyPlaces;
 import pl.com.dariusz.giza.FindReviews.service.googleApi.geolocation.GeoIPLocationService;
 import pl.com.dariusz.giza.FindReviews.service.googleApi.nearbysearch.NearbySearchService;
 

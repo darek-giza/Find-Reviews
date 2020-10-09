@@ -4,7 +4,7 @@ import com.maxmind.geoip2.DatabaseReader;
 import com.maxmind.geoip2.exception.GeoIp2Exception;
 import com.maxmind.geoip2.model.CityResponse;
 import org.springframework.stereotype.Repository;
-import pl.com.dariusz.giza.FindReviews.model.googleApi.geolocation.GeoIP;
+import pl.com.dariusz.giza.FindReviews.model.googleApiModels.geolocation.GeoIP;
 
 import java.io.File;
 import java.io.IOException;

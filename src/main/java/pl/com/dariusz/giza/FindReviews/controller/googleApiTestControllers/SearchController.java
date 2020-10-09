@@ -18,7 +18,7 @@ public class SearchController {
     }
 
     @GetMapping("/search")
-    public pl.com.dariusz.giza.FindReviews.model.googleApi.searchPlace.Example search() throws IOException {
+    public pl.com.dariusz.giza.FindReviews.model.googleApiModels.searchPlace.Example search() throws IOException {
         return searchService.search("War");
     }
 

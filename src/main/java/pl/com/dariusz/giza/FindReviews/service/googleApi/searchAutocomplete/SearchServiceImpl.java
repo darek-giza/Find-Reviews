@@ -2,7 +2,7 @@ package pl.com.dariusz.giza.FindReviews.service.googleApi.searchAutocomplete;
 
 import com.google.gson.Gson;
 import org.springframework.stereotype.Service;
-import pl.com.dariusz.giza.FindReviews.model.googleApi.searchPlace.Example;
+import pl.com.dariusz.giza.FindReviews.model.googleApiModels.searchPlace.Example;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -38,7 +38,7 @@ public class SearchServiceImpl implements SearchService {
 
         URL url = new URL(sb.toString());
         InputStreamReader reader = new InputStreamReader(url.openStream());
-        pl.com.dariusz.giza.FindReviews.model.googleApi.searchPlace.Example example = new Gson().fromJson(reader, pl.com.dariusz.giza.FindReviews.model.googleApi.searchPlace.Example.class);
+        pl.com.dariusz.giza.FindReviews.model.googleApiModels.searchPlace.Example example = new Gson().fromJson(reader, pl.com.dariusz.giza.FindReviews.model.googleApiModels.searchPlace.Example.class);
         LOGGER.info("Search with autocomplete " + url);
         return example;
 

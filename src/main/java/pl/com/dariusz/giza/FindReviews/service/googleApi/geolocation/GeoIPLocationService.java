@@ -2,7 +2,7 @@ package pl.com.dariusz.giza.FindReviews.service.googleApi.geolocation;
 
 import com.maxmind.geoip2.exception.GeoIp2Exception;
 import org.springframework.stereotype.Service;
-import pl.com.dariusz.giza.FindReviews.model.googleApi.geolocation.GeoIP;
+import pl.com.dariusz.giza.FindReviews.model.googleApiModels.geolocation.GeoIP;
 import pl.com.dariusz.giza.FindReviews.repositories.geoIpLocation.GeoIpLocation;
 import pl.com.dariusz.giza.FindReviews.service.googleApi.checkIp.WhatIsMyIpService;
 
