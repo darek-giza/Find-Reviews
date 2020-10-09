@@ -3,7 +3,6 @@ package pl.com.dariusz.giza.FindReviews.service.googleApi.findPlacesByType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.com.dariusz.giza.FindReviews.model.googleApi.details.Details;
-import pl.com.dariusz.giza.FindReviews.model.googleApi.detailsDTO.DetailsDTO;
 import pl.com.dariusz.giza.FindReviews.model.googleApi.nearbySearch.NearbyPlaces;
 import pl.com.dariusz.giza.FindReviews.service.googleApi.details.DetailsService;
 import pl.com.dariusz.giza.FindReviews.service.googleApi.nearbysearch.NearbySearchService;
@@ -30,7 +29,7 @@ public class FindServiceImpl implements FindService {
     }
 
     @Override
-    public Set<DetailsDTO> findPlacesDetails(String city, String types) throws IOException {
+    public Set<Details> findPlacesDetails(String city, String types) throws IOException, NullPointerException {
 
         int radius = 1000;
         String keywords = null;
@@ -58,16 +57,6 @@ public class FindServiceImpl implements FindService {
                 .map(i -> i.getPlaceId())
                 .collect(Collectors.toSet());
 
-        Set<DetailsDTO> detailsDto = new HashSet<>();
-
-        final Set<Details> allPlacesDetails = detailsService.getAllPlacesDetails(id);
-
-        allPlacesDetails.forEach(i -> {
-            final String placeName = i.getResult().getName();
-            final String placeId1 = i.getResult().getPlaceId();
-            detailsDto.add(new DetailsDTO(placeName, placeId1));
-
-        });
-        return detailsDto;
+        return new HashSet<>(detailsService.getAllPlacesDetails(id));
     }
 }
