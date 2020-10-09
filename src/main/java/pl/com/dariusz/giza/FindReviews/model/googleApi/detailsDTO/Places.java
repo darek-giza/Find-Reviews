@@ -3,13 +3,18 @@ package pl.com.dariusz.giza.FindReviews.model.googleApi.detailsDTO;
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-
+@Document
 @Setter
 @Getter
-public class DetailsDTO {
+public class Places {
+
+    @Id
+    private String id;
 
     @SerializedName("name")
     private String name;
@@ -33,10 +38,10 @@ public class DetailsDTO {
     private List<String> types = null;
 
     @SerializedName("reviews")
-    private List<ReviewDTO> reviews = null;
+    private List<Review> reviews = null;
 
-    public DetailsDTO(String name, String formattedAddress, String formattedPhoneNumber, String url,
-                      String website, String placeId, List<String> types, List<ReviewDTO> reviews) {
+    public Places(String name, String formattedAddress, String formattedPhoneNumber, String url,
+                  String website, String placeId, List<String> types, List<Review> reviews) {
         this.name = name;
         this.formattedAddress = formattedAddress;
         this.formattedPhoneNumber = formattedPhoneNumber;
@@ -47,10 +52,10 @@ public class DetailsDTO {
         this.reviews = reviews;
     }
 
-    public DetailsDTO() {
+    public Places() {
     }
 
-    public DetailsDTO(String name, String formattedAddress, String formattedPhoneNumber, String url, String website, String placeId, List<String> types) {
+    public Places(String name, String formattedAddress, String formattedPhoneNumber, String url, String website, String placeId, List<String> types) {
         this.name = name;
         this.formattedAddress = formattedAddress;
         this.formattedPhoneNumber = formattedPhoneNumber;

@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ReviewDTO {
+public class Review {
 
     @SerializedName("author_name")
     private String authorName;
@@ -26,10 +26,10 @@ public class ReviewDTO {
     @SerializedName("time")
     private Integer time;
 
-    public ReviewDTO() {
+    public Review() {
     }
 
-    public ReviewDTO(String authorName, String language, Integer rating, String relativeTimeDescription, String text, Integer time) {
+    public Review(String authorName, String language, Integer rating, String relativeTimeDescription, String text, Integer time) {
         this.authorName = authorName;
         this.language = language;
         this.rating = rating;
