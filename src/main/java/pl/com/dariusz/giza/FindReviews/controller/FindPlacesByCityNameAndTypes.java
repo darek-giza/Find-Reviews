@@ -14,21 +14,21 @@ import java.io.IOException;
 import java.util.Set;
 
 @RestController
-public class FindPlacesByType {
+public class FindPlacesByCityNameAndTypes {
 
     private final PlacesRepository placesRepository;
     private final FindService findService;
     private final FindParsedData findParsedData;
 
     @Autowired
-    public FindPlacesByType(PlacesRepository placesRepository, FindService findService, FindParsedData findParsedData) {
+    public FindPlacesByCityNameAndTypes(PlacesRepository placesRepository, FindService findService, FindParsedData findParsedData) {
         this.placesRepository = placesRepository;
         this.findService = findService;
         this.findParsedData = findParsedData;
     }
 
 
-    @GetMapping("/findPlacesByType")
+    @GetMapping("/find")
     public Set<Details> find(@RequestParam String city, @RequestParam String types) throws IOException {
         return findService.findPlacesDetails(city, types);
     }
@@ -36,7 +36,7 @@ public class FindPlacesByType {
     // endpoint gives response from google api
 
 
-    @GetMapping("/findPlaces")
+    @GetMapping("/fill-DB")
     public Set<Places> getParsedData(@RequestParam String city, @RequestParam String types) throws IOException {
         final Set<Places> parse = findParsedData.parse(city, types);
         placesRepository.saveAll(parse);
