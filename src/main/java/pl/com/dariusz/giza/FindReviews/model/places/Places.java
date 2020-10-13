@@ -37,11 +37,14 @@ public class Places {
     @SerializedName("types")
     private List<String> types = null;
 
+    @SerializedName("rating")
+    private Double ratingAvg;
+
     @SerializedName("reviews")
     private List<Review> reviews = null;
 
     public Places(String name, String formattedAddress, String formattedPhoneNumber, String url,
-                  String website, String placeId, List<String> types, List<Review> reviews) {
+                  String website, String placeId, List<String> types,Double ratingAvg, List<Review> reviews) {
         this.name = name;
         this.formattedAddress = formattedAddress;
         this.formattedPhoneNumber = formattedPhoneNumber;
@@ -49,6 +52,7 @@ public class Places {
         this.website = website;
         this.placeId = placeId;
         this.types = types;
+        this.ratingAvg = ratingAvg;
         this.reviews = reviews;
     }
 

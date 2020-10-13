@@ -42,6 +42,14 @@ public class FindParsedDataImpl implements FindParsedData {
 
             if (reviews != null) {
                 List<Review> reviewsDto = new ArrayList<>();
+
+                Integer ratingSum = i.getResult().getReviews()
+                        .stream()
+                        .map(r -> r.getRating())
+                        .reduce(Integer::sum).get();
+                int count = (int) i.getResult().getReviews().stream().map(r -> r.getRating()).count();
+                Double ratingAvg = Double.valueOf(ratingSum / count);
+
                 reviews.forEach(r -> {
                     String authorName = r.getAuthorName();
                     String lang = r.getLanguage();
@@ -51,7 +59,7 @@ public class FindParsedDataImpl implements FindParsedData {
                     Integer time = r.getTime();
                     reviewsDto.add(new Review(authorName, lang, rating, relativeTimeDescription, text, time));
                 });
-                detailsDto.add(new Places(placeName, address, phone, url, website, placeId1, type, reviewsDto));
+                detailsDto.add(new Places(placeName, address, phone, url, website, placeId1, type, ratingAvg, reviewsDto));
             } else {
                 detailsDto.add(new Places(placeName, address, phone, url, website, placeId1, type));
             }
