@@ -17,8 +17,15 @@ public class FindByCityImpl implements FindByCity {
         this.placesRepository = placesRepository;
     }
 
+    public FindByCityImpl() {
+
+    }
+
     @Override
     public List findByCity(String city) {
+        if(city == null){
+            throw new IllegalArgumentException("City can't be null value");
+        }
         return placesRepository.findByFormattedAddressIsContaining(city);
     }
 }

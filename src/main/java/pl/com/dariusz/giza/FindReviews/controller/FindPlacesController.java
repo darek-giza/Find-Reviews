@@ -14,14 +14,14 @@ import java.io.IOException;
 import java.util.Set;
 
 @RestController
-public class FindPlacesByCityNameAndTypes {
+public class FindPlacesController {
 
     private final PlacesRepository placesRepository;
     private final FindService findService;
     private final FindParsedData findParsedData;
 
     @Autowired
-    public FindPlacesByCityNameAndTypes(PlacesRepository placesRepository, FindService findService, FindParsedData findParsedData) {
+    public FindPlacesController(PlacesRepository placesRepository, FindService findService, FindParsedData findParsedData) {
         this.placesRepository = placesRepository;
         this.findService = findService;
         this.findParsedData = findParsedData;

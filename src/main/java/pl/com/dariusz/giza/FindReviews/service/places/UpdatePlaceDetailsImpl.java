@@ -17,8 +17,17 @@ public class UpdatePlaceDetailsImpl implements UpdatePlaceDetails {
         this.placesRepository = placesRepository;
     }
 
+    public UpdatePlaceDetailsImpl() {
+
+    }
+
     @Override
     public Places update(String id, Places places) {
+
+        if (id == null || places == null) {
+            throw new IllegalArgumentException("Id and places can't be null");
+        }
+
         final Optional<Places> placeById = placesRepository.findById(id);
 
         placeById.ifPresent(p -> {

@@ -30,17 +30,21 @@ public class SearchServiceImpl implements SearchService {
     @Override
     public Example search(String input) throws IOException {
 
-        StringBuilder sb = new StringBuilder(PLACES_API_BASE);
-        sb.append(TYPE_SEARCH_AUTOCOMPLETE);
-        sb.append(OUT_JSON);
-        sb.append("?input=" + URLEncoder.encode(input, UTF_8));
-        sb.append("&key=" + API_KEY);
+        if (input == null) {
+            throw new IllegalArgumentException("Input value can't be null");
+        }
 
-        URL url = new URL(sb.toString());
-        InputStreamReader reader = new InputStreamReader(url.openStream());
-        pl.com.dariusz.giza.FindReviews.model.googleApiModels.searchPlace.Example example = new Gson().fromJson(reader, pl.com.dariusz.giza.FindReviews.model.googleApiModels.searchPlace.Example.class);
-        LOGGER.info("Search with autocomplete " + url);
-        return example;
+            StringBuilder sb = new StringBuilder(PLACES_API_BASE);
+            sb.append(TYPE_SEARCH_AUTOCOMPLETE);
+            sb.append(OUT_JSON);
+            sb.append("?input=" + URLEncoder.encode(input, UTF_8));
+            sb.append("&key=" + API_KEY);
 
+            URL url = new URL(sb.toString());
+            InputStreamReader reader = new InputStreamReader(url.openStream());
+            pl.com.dariusz.giza.FindReviews.model.googleApiModels.searchPlace.Example example = new Gson().fromJson(reader,
+                    pl.com.dariusz.giza.FindReviews.model.googleApiModels.searchPlace.Example.class);
+            LOGGER.info("Search with autocomplete " + url);
+            return example;
     }
 }
