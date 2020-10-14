@@ -1,4 +1,4 @@
-package pl.com.dariusz.giza.FindReviews.service.googleApi.findPlacesByType;
+package pl.com.dariusz.giza.FindReviews.service.googleApi.findPlacesService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

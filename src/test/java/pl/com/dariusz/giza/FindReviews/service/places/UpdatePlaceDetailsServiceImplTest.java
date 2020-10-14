@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import pl.com.dariusz.giza.FindReviews.model.places.Places;
 
-class UpdatePlaceDetailsImplTest {
+class UpdatePlaceDetailsServiceImplTest {
 
 
     @Test
@@ -13,7 +13,7 @@ class UpdatePlaceDetailsImplTest {
         //given
         String id = null;
         Places places = new Places();
-        UpdatePlaceDetailsImpl updatePlaceDetails = new UpdatePlaceDetailsImpl();
+        UpdatePlaceDetailsServiceImpl updatePlaceDetails = new UpdatePlaceDetailsServiceImpl();
         //then
         Assertions.assertThrows(IllegalArgumentException.class, () -> updatePlaceDetails.update(id, places));
     }
@@ -24,7 +24,7 @@ class UpdatePlaceDetailsImplTest {
         //given
         String id = "5f804d040021851be2d06d7c";
         Places places = null;
-        UpdatePlaceDetailsImpl updatePlaceDetails = new UpdatePlaceDetailsImpl();
+        UpdatePlaceDetailsServiceImpl updatePlaceDetails = new UpdatePlaceDetailsServiceImpl();
         //then
         Assertions.assertThrows(IllegalArgumentException.class, () -> updatePlaceDetails.update(id, places));
     }

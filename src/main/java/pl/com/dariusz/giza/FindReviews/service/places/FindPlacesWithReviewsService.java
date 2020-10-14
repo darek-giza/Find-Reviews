@@ -4,7 +4,7 @@ import pl.com.dariusz.giza.FindReviews.model.places.Places;
 
 import java.util.List;
 
-public interface FindPlacesWithReviews {
+public interface FindPlacesWithReviewsService {
 
     List<Places> findPlacesWithReviews();
 }

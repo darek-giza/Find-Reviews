@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 import pl.com.dariusz.giza.FindReviews.model.googleApiModels.details.Details;
 import pl.com.dariusz.giza.FindReviews.model.places.Places;
 import pl.com.dariusz.giza.FindReviews.repositories.PlacesRepository;
-import pl.com.dariusz.giza.FindReviews.service.googleApi.findPlacesByType.FindParsedData;
-import pl.com.dariusz.giza.FindReviews.service.googleApi.findPlacesByType.FindService;
+import pl.com.dariusz.giza.FindReviews.service.googleApi.findPlacesService.FindParsedDataService;
+import pl.com.dariusz.giza.FindReviews.service.googleApi.findPlacesService.FindService;
 
 import java.io.IOException;
 import java.util.Set;
@@ -18,13 +18,13 @@ public class FindPlacesController {
 
     private final PlacesRepository placesRepository;
     private final FindService findService;
-    private final FindParsedData findParsedData;
+    private final FindParsedDataService findParsedDataService;
 
     @Autowired
-    public FindPlacesController(PlacesRepository placesRepository, FindService findService, FindParsedData findParsedData) {
+    public FindPlacesController(PlacesRepository placesRepository, FindService findService, FindParsedDataService findParsedDataService) {
         this.placesRepository = placesRepository;
         this.findService = findService;
-        this.findParsedData = findParsedData;
+        this.findParsedDataService = findParsedDataService;
     }
 
 
@@ -38,8 +38,8 @@ public class FindPlacesController {
 
     @GetMapping("/fill-DB")
     public Set<Places> getParsedData(@RequestParam String city, @RequestParam String types) throws IOException {
-        final Set<Places> parse = findParsedData.parse(city, types);
-        placesRepository.saveAll(parse);
+        final Set<Places> parse = findParsedDataService.parse(city, types);
+        findParsedDataService.save(parse);
         return parse;
     }
     // endpoint gives response with parsed data

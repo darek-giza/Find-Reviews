@@ -8,24 +8,17 @@ import java.util.List;
 
 
 @Service
-public class FindByCityImpl implements FindByCity {
+public class FindPlacesWithReviewsServiceImpl implements FindPlacesWithReviewsService {
 
     private PlacesRepository placesRepository;
 
     @Autowired
-    public FindByCityImpl(PlacesRepository placesRepository) {
+    public FindPlacesWithReviewsServiceImpl(PlacesRepository placesRepository) {
         this.placesRepository = placesRepository;
     }
 
-    public FindByCityImpl() {
-
-    }
-
     @Override
-    public List findByCity(String city) {
-        if(city == null){
-            throw new IllegalArgumentException("City can't be null value");
-        }
-        return placesRepository.findByFormattedAddressIsContaining(city);
+    public List findPlacesWithReviews() {
+        return placesRepository.findPlacesByReviewsIsNotNull();
     }
 }

@@ -8,16 +8,16 @@ import pl.com.dariusz.giza.FindReviews.repositories.PlacesRepository;
 import java.util.Optional;
 
 @Service
-public class UpdatePlaceDetailsImpl implements UpdatePlaceDetails {
+public class UpdatePlaceDetailsServiceImpl implements UpdatePlaceDetailsService {
 
     private PlacesRepository placesRepository;
 
     @Autowired
-    public UpdatePlaceDetailsImpl(PlacesRepository placesRepository) {
+    public UpdatePlaceDetailsServiceImpl(PlacesRepository placesRepository) {
         this.placesRepository = placesRepository;
     }
 
-    public UpdatePlaceDetailsImpl() {
+    public UpdatePlaceDetailsServiceImpl() {
 
     }
 

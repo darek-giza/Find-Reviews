@@ -1,10 +1,11 @@
-package pl.com.dariusz.giza.FindReviews.service.googleApi.findPlacesByType;
+package pl.com.dariusz.giza.FindReviews.service.googleApi.findPlacesService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.com.dariusz.giza.FindReviews.model.googleApiModels.details.Details;
 import pl.com.dariusz.giza.FindReviews.model.places.Places;
 import pl.com.dariusz.giza.FindReviews.model.places.Review;
+import pl.com.dariusz.giza.FindReviews.repositories.PlacesRepository;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,14 +14,16 @@ import java.util.List;
 import java.util.Set;
 
 @Service
-public class FindParsedDataImpl implements FindParsedData {
+public class FindParsedDataServiceImpl implements FindParsedDataService {
 
 
     private FindService findService;
+    private PlacesRepository placesRepository;
 
     @Autowired
-    public FindParsedDataImpl(FindService findService) {
+    public FindParsedDataServiceImpl(FindService findService, PlacesRepository placesRepository) {
         this.findService = findService;
+        this.placesRepository = placesRepository;
     }
 
     @Override
@@ -66,4 +69,10 @@ public class FindParsedDataImpl implements FindParsedData {
         });
         return detailsDto;
     }
+
+    @Override
+    public void save(Set<Places> placesSet) {
+        placesRepository.saveAll(placesSet);
+    }
+
 }

@@ -1,4 +1,4 @@
-package pl.com.dariusz.giza.FindReviews.service.googleApi.findPlacesByType;
+package pl.com.dariusz.giza.FindReviews.service.googleApi.findPlacesService;
 
 import pl.com.dariusz.giza.FindReviews.model.googleApiModels.details.Details;
 

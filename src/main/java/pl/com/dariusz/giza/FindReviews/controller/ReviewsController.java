@@ -5,63 +5,64 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import pl.com.dariusz.giza.FindReviews.model.places.Places;
-import pl.com.dariusz.giza.FindReviews.repositories.PlacesRepository;
-import pl.com.dariusz.giza.FindReviews.service.places.FindByCity;
-import pl.com.dariusz.giza.FindReviews.service.places.FindPlacesWithReviews;
-import pl.com.dariusz.giza.FindReviews.service.places.UpdatePlaceDetails;
+import pl.com.dariusz.giza.FindReviews.service.places.FindByCityService;
+import pl.com.dariusz.giza.FindReviews.service.places.FindPlacesWithReviewsService;
+import pl.com.dariusz.giza.FindReviews.service.places.PlacesService;
+import pl.com.dariusz.giza.FindReviews.service.places.UpdatePlaceDetailsService;
 
 import java.util.List;
 
 @RestController
 public class ReviewsController {
 
-    private PlacesRepository placesRepository;
-    private FindByCity findByCity;
-    private FindPlacesWithReviews findPlacesWithReviews;
-    private UpdatePlaceDetails updatePlaceDetails;
+    private PlacesService placesService;
+    private FindByCityService findByCityService;
+    private FindPlacesWithReviewsService findPlacesWithReviewsService;
+    private UpdatePlaceDetailsService updatePlaceDetailsService;
 
     @Autowired
-    public ReviewsController(PlacesRepository placesRepository, FindByCity findByCity,
-                             FindPlacesWithReviews findPlacesWithReviews, UpdatePlaceDetails updatePlaceDetails) {
-        this.placesRepository = placesRepository;
-        this.findByCity = findByCity;
-        this.findPlacesWithReviews = findPlacesWithReviews;
-        this.updatePlaceDetails = updatePlaceDetails;
+    public ReviewsController(PlacesService placesService, FindByCityService findByCityService,
+                             FindPlacesWithReviewsService findPlacesWithReviewsService, UpdatePlaceDetailsService updatePlaceDetailsService) {
+        this.placesService = placesService;
+        this.findByCityService = findByCityService;
+        this.findPlacesWithReviewsService = findPlacesWithReviewsService;
+        this.updatePlaceDetailsService = updatePlaceDetailsService;
     }
 
     @GetMapping("/api/getAll")
     public List<Places> getAll() {
-        return placesRepository.findAll();
+        return placesService.getAll();
     }
 
     @GetMapping("/api/getByCity")
     public List<Places> getByCity(@RequestParam String city) {
-        return findByCity.findByCity(city);
+        return findByCityService.findByCity(city);
     }
 
     @GetMapping("/api/getPlacesWithReviews")
     public List<Places> getWithReviews() {
-        return findPlacesWithReviews.findPlacesWithReviews();
+        return findPlacesWithReviewsService.findPlacesWithReviews();
     }
 
     @PostMapping("/addPlaces")
     @ResponseStatus(HttpStatus.CREATED)
     public List<Places> addPlacesList(@RequestBody List<Places> placesList) {
         Preconditions.checkNotNull(placesList);
-        return placesRepository.saveAll(placesList);
+        return placesService.save(placesList);
+
     }
 
     @PutMapping("/api/updatePlace")
     @ResponseStatus(HttpStatus.OK)
     public Places update(@RequestParam String id, @RequestBody Places place){
         Preconditions.checkNotNull(id,place);
-        return updatePlaceDetails.update(id,place);
+        return updatePlaceDetailsService.update(id, place);
     }
 
     @DeleteMapping("/deletePlaceById")
     @ResponseStatus(HttpStatus.OK)
     public void deletePlaceById(@RequestParam String id) {
         Preconditions.checkNotNull(id);
-        placesRepository.deleteById(id);
+        placesService.delete(id);
     }
 }
