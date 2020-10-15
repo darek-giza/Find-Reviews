@@ -11,6 +11,7 @@ import pl.com.dariusz.giza.FindReviews.model.places.Places;
 import pl.com.dariusz.giza.FindReviews.repositories.PlacesRepository;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static org.mockito.Mockito.*;
 
@@ -26,12 +27,11 @@ public class UpdatePlaceDetailsServiceImplTest {
     @Test
     public void update() {
         //given
-        List<Places> placesList = TestUtil.createListPlaces();
-        final Places places = placesList.get(0);
-        final String id = placesList.get(0).getId();
-        when(placesRepository.findAllById(any())).thenReturn(placesList);
+        final Places place = TestUtil.createListPlaces().get(0);
+        final String id = place.getId();
+        when(placesRepository.findById(any())).thenReturn(java.util.Optional.of(place));
         //when
-        updatePlaceDetailsService.update(any(), any());
+        updatePlaceDetailsService.update(id,place);
         //then
         verify(placesRepository, times(1)).save(any());
     }
