@@ -1,7 +1,7 @@
 package pl.com.dariusz.giza.FindReviews.service.googleApi.searchAutocomplete;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.net.MalformedURLException;
 import java.net.URL;

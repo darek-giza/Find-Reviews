@@ -1,12 +1,40 @@
 package pl.com.dariusz.giza.FindReviews;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.http.MediaType;
 import pl.com.dariusz.giza.FindReviews.model.places.Places;
 import pl.com.dariusz.giza.FindReviews.model.places.Review;
 
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TestUtil {
+
+    public static final MediaType APPLICATION_JSON_UTF8 = new MediaType(MediaType.APPLICATION_JSON.getType(),
+            MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
+
+    public static byte[] convertObjectToJsonBytes(Object object) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        return mapper.writeValueAsBytes(object);
+    }
+
+    public static String createStringWithLength(int length) {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < length; i++) {
+            builder.append("a");
+        }
+        return builder.toString();
+    }
+
+    public static String asJsonString(Object obj) throws JsonProcessingException {
+        final ObjectMapper mapper = new ObjectMapper();
+        String jsonContent = mapper.writeValueAsString(obj);
+        return jsonContent;
+    }
 
     public static List<Places> createListPlaces() {
         List<Places> places = new ArrayList<>();
