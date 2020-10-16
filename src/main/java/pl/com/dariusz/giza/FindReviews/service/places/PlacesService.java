@@ -10,5 +10,7 @@ public interface PlacesService {
 
     List<Places> save(List<Places> placesList);
 
+    Places getById(String id);
+
     void delete(String id);
 }

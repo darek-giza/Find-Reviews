@@ -58,7 +58,7 @@ public class ReviewsController {
         return new ResponseEntity<>(placesWithReviews,HttpStatus.OK);
     }
 
-    @PostMapping("/addPlaces")
+    @PostMapping("/api/addPlaces")
     public ResponseEntity<List<Places>> addPlacesList(@RequestBody List<Places> placesList) {
         Preconditions.checkNotNull(placesList);
         final List<Places> saveList = placesService.save(placesList);
@@ -79,13 +79,18 @@ public class ReviewsController {
         return new ResponseEntity<>(update,HttpStatus.OK);
     }
 
-    @DeleteMapping("/deletePlaceById")
+    @DeleteMapping("/api/deletePlaceById")
     public ResponseEntity deletePlaceById(@RequestParam String id) {
         Preconditions.checkNotNull(id);
-        if(id == null){
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        if (id == null) {
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
-        placesService.delete(id);
-        return new ResponseEntity(HttpStatus.OK);
+        final Places placeById = placesService.getById(id);
+        if (placeById == null) {
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        } else {
+            placesService.delete(id);
+            return new ResponseEntity(HttpStatus.OK);
+        }
     }
 }

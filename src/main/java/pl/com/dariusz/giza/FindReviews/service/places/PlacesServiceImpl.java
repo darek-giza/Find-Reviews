@@ -28,6 +28,11 @@ public class PlacesServiceImpl implements PlacesService {
     }
 
     @Override
+    public Places getById(String id) {
+        return placesRepository.findById(id).get();
+    }
+
+    @Override
     public void delete(String id) {
         placesRepository.deleteById(id);
     }
