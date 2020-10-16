@@ -3,6 +3,7 @@ package pl.com.dariusz.giza.FindReviews.controller;
 import com.google.common.base.Preconditions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.com.dariusz.giza.FindReviews.model.places.Places;
 import pl.com.dariusz.giza.FindReviews.service.places.FindByCityService;
@@ -30,39 +31,61 @@ public class ReviewsController {
     }
 
     @GetMapping("/api/getAll")
-    public List<Places> getAll() {
-        return placesService.getAll();
+    public ResponseEntity<List<Places>> getAll() {
+        final List<Places> all = placesService.getAll();
+        if(all.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(all,HttpStatus.OK);
     }
 
     @GetMapping("/api/getByCity")
-    public List<Places> getByCity(@RequestParam String city) {
-        return findByCityService.findByCity(city);
-    }
+    public ResponseEntity<List<Places>> getByCity(@RequestParam String city) {
+        List<Places> list = findByCityService.findByCity(city);
+        if(list.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+            return new ResponseEntity<>(list, HttpStatus.OK);
+
+     }
 
     @GetMapping("/api/getPlacesWithReviews")
-    public List<Places> getWithReviews() {
-        return findPlacesWithReviewsService.findPlacesWithReviews();
+    public ResponseEntity<List<Places>> getWithReviews() {
+        final List<Places> placesWithReviews = findPlacesWithReviewsService.findPlacesWithReviews();
+        if(placesWithReviews.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(placesWithReviews,HttpStatus.OK);
     }
 
     @PostMapping("/addPlaces")
-    @ResponseStatus(HttpStatus.CREATED)
-    public List<Places> addPlacesList(@RequestBody List<Places> placesList) {
+    public ResponseEntity<List<Places>> addPlacesList(@RequestBody List<Places> placesList) {
         Preconditions.checkNotNull(placesList);
-        return placesService.save(placesList);
+        final List<Places> saveList = placesService.save(placesList);
+        if(placesList.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(saveList,HttpStatus.CREATED);
 
     }
 
     @PutMapping("/api/updatePlace")
-    @ResponseStatus(HttpStatus.OK)
-    public Places update(@RequestParam String id, @RequestBody Places place){
+    public ResponseEntity<Places> update(@RequestParam String id, @RequestBody Places place){
         Preconditions.checkNotNull(id,place);
-        return updatePlaceDetailsService.update(id, place);
+        final Places update = updatePlaceDetailsService.update(id, place);
+        if(id==null || place==null){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(update,HttpStatus.OK);
     }
 
     @DeleteMapping("/deletePlaceById")
-    @ResponseStatus(HttpStatus.OK)
-    public void deletePlaceById(@RequestParam String id) {
+    public ResponseEntity deletePlaceById(@RequestParam String id) {
         Preconditions.checkNotNull(id);
+        if(id == null){
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
         placesService.delete(id);
+        return new ResponseEntity(HttpStatus.OK);
     }
 }
