@@ -87,7 +87,7 @@ public class PlacesController {
         }
         final Places placeById = placesService.getById(id);
         if (placeById == null) {
-            return new ResponseEntity(HttpStatus.NOT_FOUND);
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
         } else {
             placesService.delete(id);
             return new ResponseEntity(HttpStatus.OK);

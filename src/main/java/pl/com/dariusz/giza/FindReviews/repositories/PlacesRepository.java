@@ -13,4 +13,6 @@ public interface PlacesRepository extends MongoRepository<Places, String> {
 
     List<Places> findPlacesByReviewsIsNotNull();
 
+    List<Places> findByAddress_Locality(String locality);
+
 }

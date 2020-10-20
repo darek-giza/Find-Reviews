@@ -48,7 +48,7 @@ public class FillDbFromGoogleApiController {
         if (parsedPlacesDetails == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-//        persistPlacesDao.save(parsedPlacesDetails);
+        persistPlacesDao.save(parsedPlacesDetails);
         return new ResponseEntity<>(parsedPlacesDetails, HttpStatus.OK);
     }
     // endpoint gives response with parsed data and save it in DB

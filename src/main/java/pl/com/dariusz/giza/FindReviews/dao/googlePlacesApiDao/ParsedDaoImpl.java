@@ -58,7 +58,7 @@ public class ParsedDaoImpl implements ParsedDao {
     public Double getRatingAvg(List<Review> reviews) {
         Integer ratingSum = reviews.stream().map(r -> r.getRating()).reduce(Integer::sum).get();
         int count = (int) reviews.stream().map(r -> r.getRating()).count();
-        return Double.valueOf(ratingSum / count);
+        return (double) (ratingSum / count);
     }
 
     public Address getAddress(List<AddressComponent> addressComponents) {
