@@ -6,8 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.com.dariusz.giza.FindReviews.googlePlacesApiExample.service.geoIpService.GeoIpService;
 import pl.com.dariusz.giza.FindReviews.googlePlacesApiExample.model.geolocation.GeoIP;
+import pl.com.dariusz.giza.FindReviews.googlePlacesApiExample.service.geoIpService.GeoIpService;
 
 import java.io.IOException;
 
