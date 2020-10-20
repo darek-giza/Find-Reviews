@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.MediaType;
-import pl.com.dariusz.giza.FindReviews.model.places.Places;
-import pl.com.dariusz.giza.FindReviews.model.places.Review;
+import pl.com.dariusz.giza.FindReviews.model.Places;
+import pl.com.dariusz.giza.FindReviews.model.Review;
 
 import java.nio.charset.Charset;
 import java.util.ArrayList;

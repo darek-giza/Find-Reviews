@@ -18,11 +18,11 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import pl.com.dariusz.giza.FindReviews.TestUtil;
-import pl.com.dariusz.giza.FindReviews.model.places.Places;
-import pl.com.dariusz.giza.FindReviews.service.places.FindByCityService;
-import pl.com.dariusz.giza.FindReviews.service.places.FindPlacesWithReviewsService;
-import pl.com.dariusz.giza.FindReviews.service.places.PlacesService;
-import pl.com.dariusz.giza.FindReviews.service.places.UpdatePlaceDetailsService;
+import pl.com.dariusz.giza.FindReviews.model.Places;
+import pl.com.dariusz.giza.FindReviews.service.FindByCityService;
+import pl.com.dariusz.giza.FindReviews.service.FindPlacesWithReviewsService;
+import pl.com.dariusz.giza.FindReviews.service.PlacesService;
+import pl.com.dariusz.giza.FindReviews.service.UpdatePlaceDetailsService;
 
 import java.util.ArrayList;
 import java.util.List;

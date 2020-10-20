@@ -5,11 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.com.dariusz.giza.FindReviews.model.places.Places;
-import pl.com.dariusz.giza.FindReviews.service.places.FindByCityService;
-import pl.com.dariusz.giza.FindReviews.service.places.FindPlacesWithReviewsService;
-import pl.com.dariusz.giza.FindReviews.service.places.PlacesService;
-import pl.com.dariusz.giza.FindReviews.service.places.UpdatePlaceDetailsService;
+import pl.com.dariusz.giza.FindReviews.model.Places;
+import pl.com.dariusz.giza.FindReviews.service.FindByCityService;
+import pl.com.dariusz.giza.FindReviews.service.FindPlacesWithReviewsService;
+import pl.com.dariusz.giza.FindReviews.service.PlacesService;
+import pl.com.dariusz.giza.FindReviews.service.UpdatePlaceDetailsService;
 
 import java.util.List;
 

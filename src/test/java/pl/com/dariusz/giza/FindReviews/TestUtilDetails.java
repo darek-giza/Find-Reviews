@@ -1,8 +1,8 @@
 package pl.com.dariusz.giza.FindReviews;
 
-import pl.com.dariusz.giza.FindReviews.model.googleApiModels.details.AddressComponent;
-import pl.com.dariusz.giza.FindReviews.model.googleApiModels.details.Details;
-import pl.com.dariusz.giza.FindReviews.model.googleApiModels.details.Result;
+import pl.com.dariusz.giza.FindReviews.googlePlacesApiExample.model.details.AddressComponent;
+import pl.com.dariusz.giza.FindReviews.googlePlacesApiExample.model.details.Details;
+import pl.com.dariusz.giza.FindReviews.googlePlacesApiExample.model.details.Result;
 
 import java.util.*;
 
