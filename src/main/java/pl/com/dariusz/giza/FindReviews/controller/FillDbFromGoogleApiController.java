@@ -7,10 +7,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import pl.com.dariusz.giza.FindReviews.dao.placesApiDao.FetchPlacesDao;
-import pl.com.dariusz.giza.FindReviews.dao.placesApiDao.PersistPlacesDao;
-import pl.com.dariusz.giza.FindReviews.googlePlacesApiExample.model.details.Details;
+import pl.com.dariusz.giza.FindReviews.dao.googlePlacesApiDao.FetchPlacesDao;
+import pl.com.dariusz.giza.FindReviews.dao.googlePlacesApiDao.PersistPlacesDao;
 import pl.com.dariusz.giza.FindReviews.model.Places;
+import pl.com.dariusz.giza.googlePlacesApiExample.model.details.Details;
 
 import java.io.IOException;
 import java.util.Set;

@@ -16,8 +16,8 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import pl.com.dariusz.giza.FindReviews.TestUtilDetails;
-import pl.com.dariusz.giza.FindReviews.dao.placesApiDao.FetchPlacesDao;
-import pl.com.dariusz.giza.FindReviews.googlePlacesApiExample.model.details.Details;
+import pl.com.dariusz.giza.FindReviews.dao.googlePlacesApiDao.FetchPlacesDao;
+import pl.com.dariusz.giza.googlePlacesApiExample.model.details.Details;
 
 import java.util.Set;
 
