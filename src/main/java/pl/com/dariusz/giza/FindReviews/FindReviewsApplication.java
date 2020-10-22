@@ -1,7 +1,9 @@
 package pl.com.dariusz.giza.FindReviews;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @SpringBootApplication
@@ -12,4 +14,8 @@ public class FindReviewsApplication {
 		SpringApplication.run(FindReviewsApplication.class, args);
 	}
 
+	@Bean
+	public ModelMapper modelMapper() {
+		return new ModelMapper();
+	}
 }

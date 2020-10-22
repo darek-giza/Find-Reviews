@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface PlacesRepositoryCustom {
 
-    @Query(value = "{}", fields = "{id:1,name:1, address:1}")
+//    @Query(value = "{}", fields = "{id:1,name:1, address:1}")
     List<Places> findByCityAndSortByName(String city);
 }
