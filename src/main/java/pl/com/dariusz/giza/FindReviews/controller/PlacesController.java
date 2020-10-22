@@ -14,7 +14,10 @@ import pl.com.dariusz.giza.FindReviews.service.UpdatePlaceDetailsService;
 import java.util.List;
 
 @RestController
+@RequestMapping(PlacesController.BASE_URL)
 public class PlacesController {
+
+    public static final String BASE_URL = "/api";
 
     private PlacesService placesService;
     private FindByCityService findByCityService;
@@ -30,7 +33,7 @@ public class PlacesController {
         this.updatePlaceDetailsService = updatePlaceDetailsService;
     }
 
-    @GetMapping("/api/getAll")
+    @GetMapping("getAll")
     public ResponseEntity<List<Places>> getAll() {
         final List<Places> all = placesService.getAll();
         if(all.isEmpty()){
@@ -39,17 +42,16 @@ public class PlacesController {
         return new ResponseEntity<>(all,HttpStatus.OK);
     }
 
-    @GetMapping("/api/getByCity")
+    @GetMapping("getByCity")
     public ResponseEntity<List<Places>> getByCity(@RequestParam String city) {
         List<Places> list = findByCityService.findByCity(city);
         if(list.isEmpty()){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
             return new ResponseEntity<>(list, HttpStatus.OK);
-
      }
 
-    @GetMapping("/api/getPlacesWithReviews")
+    @GetMapping("getPlacesWithReviews")
     public ResponseEntity<List<Places>> getWithReviews() {
         final List<Places> placesWithReviews = findPlacesWithReviewsService.findPlacesWithReviews();
         if(placesWithReviews.isEmpty()){
@@ -58,7 +60,7 @@ public class PlacesController {
         return new ResponseEntity<>(placesWithReviews,HttpStatus.OK);
     }
 
-    @PostMapping("/api/addPlaces")
+    @PostMapping("/addPlaces")
     public ResponseEntity<List<Places>> addPlacesList(@RequestBody List<Places> placesList) {
         Preconditions.checkNotNull(placesList);
         final List<Places> saveList = placesService.save(placesList);
@@ -66,10 +68,9 @@ public class PlacesController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(saveList,HttpStatus.CREATED);
-
     }
 
-    @PutMapping("/api/updatePlace")
+    @PutMapping("updatePlace")
     public ResponseEntity<Places> update(@RequestParam String id, @RequestBody Places place){
         Preconditions.checkNotNull(id,place);
         final Places update = updatePlaceDetailsService.update(id, place);
@@ -79,7 +80,7 @@ public class PlacesController {
         return new ResponseEntity<>(update,HttpStatus.OK);
     }
 
-    @DeleteMapping("/api/deletePlaceById")
+    @DeleteMapping("deletePlaceById")
     public ResponseEntity deletePlaceById(@RequestParam String id) {
         Preconditions.checkNotNull(id);
         if (id == null) {
@@ -87,7 +88,7 @@ public class PlacesController {
         }
         final Places placeById = placesService.getById(id);
         if (placeById == null) {
-            return new ResponseEntity(HttpStatus.NO_CONTENT);
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
         } else {
             placesService.delete(id);
             return new ResponseEntity(HttpStatus.OK);
