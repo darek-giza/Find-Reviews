@@ -9,7 +9,6 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.modelmapper.ModelMapper;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
@@ -19,12 +18,11 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import pl.com.dariusz.giza.FindReviews.TestUtil;
-import pl.com.dariusz.giza.FindReviews.dto.PlaceDto;
 import pl.com.dariusz.giza.FindReviews.model.Places;
-import pl.com.dariusz.giza.FindReviews.service.FindPlacesWithReviewsService;
-import pl.com.dariusz.giza.FindReviews.service.UpdatePlaceDetailsService;
 import pl.com.dariusz.giza.FindReviews.service.FindByCityService;
+import pl.com.dariusz.giza.FindReviews.service.FindPlacesWithReviewsService;
 import pl.com.dariusz.giza.FindReviews.service.PlacesService;
+import pl.com.dariusz.giza.FindReviews.service.UpdatePlaceDetailsService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -83,7 +81,7 @@ public class PlacesControllerTest {
     @Test
     public void getByCity() throws Exception {
         List<Places> list = TestUtil.createListPlaces();
-        when(findByCityService.findByCity("Warszawa")).thenReturn(list);
+        when(findByCityService.findByCity(any())).thenReturn(list);
         RequestBuilder request = MockMvcRequestBuilders.get("/api/getByCity?city=Warszawa");
         mock.perform(request)
                 .andExpect(MockMvcResultMatchers.status().isOk())

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.MediaType;
+import pl.com.dariusz.giza.FindReviews.model.Address;
 import pl.com.dariusz.giza.FindReviews.model.Places;
 import pl.com.dariusz.giza.FindReviews.model.Reviews;
 
@@ -62,6 +63,7 @@ public class TestUtil {
         place2.setId("2");
         place2.setName("Spa&Fit");
         place2.setFormattedAddress("Warszawa");
+        place2.setAddress(getAddress());
         place2.setFormattedPhoneNumber("0032223");
         place2.setUrl("https://");
         place2.setWebsite("https://");
@@ -91,5 +93,14 @@ public class TestUtil {
         review.setText("text");
         review.setTime(44444555);
         return reviews;
+    }
+
+    public static Address getAddress() {
+        Address address = new Address();
+        address.setCountry("Polska");
+        address.setLocality("Warszawa");
+        address.setRoute("Łazienkowska");
+        address.setStreetNumber("15");
+        return address;
     }
 }
