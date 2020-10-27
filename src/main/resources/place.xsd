@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://FindReviews.giza.dariusz.com.pl/getPlace"
+           targetNamespace="http://FindReviews.giza.dariusz.com.pl/getPlace">
+
+    <xs:element name="getPlaceRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getPlaceResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="places" type="tns:place"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="place">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="formattedAddress" type="xs:string"/>
+            <xs:element name="address" type="tns:address"/>
+            <xs:element name="url" type="xs:string"/>
+            <xs:element name="website" type="xs:string"/>
+            <xs:element name="placeId" type="xs:string"/>
+            <xs:element name="types" type="tns:types"/>
+            <xs:element name="ratingAvg" type="xs:string"/>
+            <xs:element name="reviews" type="tns:reviews"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="types">
+        <xs:list itemType="xs:string"/>
+    </xs:simpleType>
+
+    <xs:complexType name="reviews">
+        <xs:sequence>
+            <xs:element name="authorName" type="xs:string"/>
+            <xs:element name="language" type="xs:string"/>
+            <xs:element name="rating" type="xs:integer"/>
+            <xs:element name="relativeTimeDescription" type="xs:string"/>
+            <xs:element name="text" type="xs:string"/>
+            <xs:element name="time" type="xs:integer"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="address">
+        <xs:sequence>
+            <xs:element name="route" type="xs:string"/>
+            <xs:element name="streetNumber" type="xs:string"/>
+            <xs:element name="postalCode" type="xs:string"/>
+            <xs:element name="locality" type="xs:string"/>
+            <xs:element name="province" type="xs:string"/>
+            <xs:element name="country" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
