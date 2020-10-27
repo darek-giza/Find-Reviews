@@ -1,4 +1,4 @@
-package pl.com.dariusz.giza.FindReviews.service;
+package pl.com.dariusz.giza.FindReviews.service.userUtilsService;
 
 import pl.com.dariusz.giza.FindReviews.model.User;
 

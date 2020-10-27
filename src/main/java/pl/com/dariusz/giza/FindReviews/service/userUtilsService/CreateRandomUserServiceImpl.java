@@ -1,4 +1,4 @@
-package pl.com.dariusz.giza.FindReviews.service;
+package pl.com.dariusz.giza.FindReviews.service.userUtilsService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -6,6 +6,7 @@ import pl.com.dariusz.giza.FindReviews.model.Places;
 import pl.com.dariusz.giza.FindReviews.model.Reviews;
 import pl.com.dariusz.giza.FindReviews.model.User;
 import pl.com.dariusz.giza.FindReviews.repositories.UserRepository;
+import pl.com.dariusz.giza.FindReviews.service.PlacesService;
 
 import java.util.ArrayList;
 import java.util.List;

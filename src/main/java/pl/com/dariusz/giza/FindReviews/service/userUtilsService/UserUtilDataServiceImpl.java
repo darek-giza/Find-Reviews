@@ -1,4 +1,4 @@
-package pl.com.dariusz.giza.FindReviews.service;
+package pl.com.dariusz.giza.FindReviews.service.userUtilsService;
 
 import org.springframework.stereotype.Service;
 import pl.com.dariusz.giza.FindReviews.model.User;
