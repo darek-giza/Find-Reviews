@@ -11,7 +11,7 @@ import pl.com.dariusz.giza.FindReviews.dto.PlaceDto;
 import pl.com.dariusz.giza.FindReviews.model.Places;
 
 @RunWith(MockitoJUnitRunner.class)
-public class PlaceMapperTest {
+public class PlacesMapperTest {
 
     @Test
     public void shouldMapPlaceEntity() {

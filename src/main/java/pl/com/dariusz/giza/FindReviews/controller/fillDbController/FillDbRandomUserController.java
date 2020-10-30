@@ -1,4 +1,4 @@
-package pl.com.dariusz.giza.FindReviews.controller;
+package pl.com.dariusz.giza.FindReviews.controller.fillDbController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -21,6 +21,7 @@
 
     <xs:complexType name="place">
         <xs:sequence>
+            <xs:element name="id" type="xs:string"/>
             <xs:element name="name" type="xs:string"/>
             <xs:element name="formattedAddress" type="xs:string"/>
             <xs:element name="address" type="tns:address"/>

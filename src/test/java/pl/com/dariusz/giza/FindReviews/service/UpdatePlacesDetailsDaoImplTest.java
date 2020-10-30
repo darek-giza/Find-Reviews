@@ -13,7 +13,7 @@ import pl.com.dariusz.giza.FindReviews.repositories.PlacesRepository;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class UpdatePlaceDetailsDaoImplTest {
+public class UpdatePlacesDetailsDaoImplTest {
 
     @Mock
     private PlacesRepository placesRepository;
