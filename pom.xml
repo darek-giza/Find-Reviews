@@ -23,7 +23,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web-services</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -140,25 +143,59 @@
 			</plugin>
 
 			<!-- Generate the Domain Java Classes -->
+<!--			<plugin>-->
+<!--				<groupId>org.codehaus.mojo</groupId>-->
+<!--				<artifactId>jaxb2-maven-plugin</artifactId>-->
+<!--				<version>2.5.0</version>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<id>xjc</id>-->
+<!--						<goals>-->
+<!--							<goal>xjc</goal>-->
+<!--						</goals>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--				<configuration>-->
+<!--					<sources>-->
+<!--						<source>src/main/resources/place.xsd</source>-->
+<!--					</sources>-->
+<!--					<outputDirectory>${project.basedir}/src/main/java/pl/com/dariusz/giza/FindReviews/soap-->
+<!--					</outputDirectory>-->
+<!--					<clearOutputDir>false</clearOutputDir>-->
+<!--				</configuration>-->
+<!--			</plugin>-->
+
+
+			<!-- Generate the xsd file from Domain Java Classes -->
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.5.1</version>
+			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>jaxb2-maven-plugin</artifactId>
 				<version>2.5.0</version>
 				<executions>
 					<execution>
-						<id>xjc</id>
+						<id>schemagen</id>
 						<goals>
-							<goal>xjc</goal>
+							<goal>schemagen</goal>
 						</goals>
 					</execution>
 				</executions>
 				<configuration>
 					<sources>
-						<source>src/main/resources/place.xsd</source>
+						<source>src/main/java/pl/com/dariusz/giza/FindReviews/dto</source>
 					</sources>
-					<outputDirectory>${project.basedir}/src/main/java/pl/com/dariusz/giza/FindReviews/soap
-					</outputDirectory>
-					<clearOutputDir>false</clearOutputDir>
+					<transformSchemas>
+						<transformSchema>
+							<uri>http://FindReviews.giza.dariusz.com.pl/getPlaceDto</uri>
+							<toPrefix>c</toPrefix>
+							<toFile>placeDto.xsd</toFile>
+						</transformSchema>
+					</transformSchemas>
 				</configuration>
 			</plugin>
 		</plugins>

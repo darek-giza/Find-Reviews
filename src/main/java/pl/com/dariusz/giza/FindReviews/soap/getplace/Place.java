@@ -74,13 +74,14 @@ public class Place {
     protected String website;
     @XmlElement(required = true)
     protected String placeId;
-    @XmlList
+//    @XmlList
     @XmlElement(required = true)
     protected List<String> types;
     @XmlElement(required = true)
     protected String ratingAvg;
+//    @XmlList
     @XmlElement(required = true)
-    protected Reviews reviews;
+    protected List<Reviews> reviews;
 
     /**
      * Gets the value of the id property.
@@ -273,10 +274,7 @@ public class Place {
      * 
      */
     public List<String> getTypes() {
-        if (types == null) {
-            types = new ArrayList<String>();
-        }
-        return this.types;
+        return types;
     }
 
     /**
@@ -287,6 +285,11 @@ public class Place {
      *     {@link String }
      *     
      */
+
+    public void setTypes(List<String> types) {
+        this.types = types;
+    }
+
     public String getRatingAvg() {
         return ratingAvg;
     }
@@ -311,20 +314,19 @@ public class Place {
      *     {@link Reviews }
      *     
      */
-    public Reviews getReviews() {
+    public List<Reviews> getReviews() {
         return reviews;
     }
 
     /**
      * Sets the value of the reviews property.
-     * 
-     * @param value
+     *
+     * @param reviews
      *     allowed object is
      *     {@link Reviews }
-     *     
+     *
      */
-    public void setReviews(Reviews value) {
-        this.reviews = value;
+    public void setReviews(List<Reviews> reviews) {
+        this.reviews = reviews;
     }
-
 }
